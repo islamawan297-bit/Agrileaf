@@ -968,6 +968,23 @@ function renderLogin() {
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">Log In</button>
                 </form>
+                
+                <div style="display: flex; align-items: center; margin: 16px 0; color: var(--gray-med); font-size: 13px;">
+                    <div style="flex: 1; height: 1px; background-color: var(--border);"></div>
+                    <span style="padding: 0 10px;">or</span>
+                    <div style="flex: 1; height: 1px; background-color: var(--border);"></div>
+                </div>
+                
+                <button type="button" class="btn google-login-btn" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background-color: var(--white); border: 1px solid #dadce0; color: #3c4043; font-weight: 500; font-size: 14px; padding: 10px 16px; border-radius: var(--radius-sm); cursor: pointer; transition: var(--transition);" onmouseenter="this.style.backgroundColor='#f8f9fa'" onmouseleave="this.style.backgroundColor='#ffffff'">
+                    <svg width="18" height="18" viewBox="0 0 18 18" style="margin-right: 4px;">
+                        <path fill="#4285F4" d="M17.64 9.2c0-.63-.06-1.25-.16-1.84H9v3.47h4.84c-.21 1.12-.84 2.07-1.79 2.7l2.76 2.13c1.62-1.49 2.55-3.69 2.55-6.3L17.64 9.2z"/>
+                        <path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.76-2.13c-.76.51-1.74.82-2.76.82-2.35 0-4.34-1.58-5.05-3.72L1.57 12.9C3.06 15.93 6.18 18 9 18z"/>
+                        <path fill="#FBBC05" d="M3.95 10.79c-.18-.54-.28-1.12-.28-1.79s.1-1.25.28-1.79L1.57 5.09C.57 7.08 0 9.48 0 12s.57 4.92 1.57 6.91l2.38-1.88z"/>
+                        <path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.44 1.35l2.58-2.58C13.46.86 11.43 0 9 0 6.18 0 3.06 2.07 1.57 5.09l2.38 1.88c.71-2.14 2.7-3.72 5.05-3.72z"/>
+                    </svg>
+                    Continue with Google
+                </button>
+
                 <div style="margin-top: 16px; padding: 16px; background-color: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.15); border-radius: var(--radius-sm); font-size: 13px; color: var(--gray-dark);">
                     <div style="font-weight:700; color:var(--primary); margin-bottom:6px;"><i class="fa-solid fa-circle-info"></i> Demo Credentials:</div>
                     <div style="margin-bottom: 2px;"><strong>Admin:</strong> admin@agrileaf.com / admin123</div>
@@ -989,6 +1006,16 @@ function renderLogin() {
         const pass = document.getElementById('login-password').value;
         handleLogin(email, pass);
     };
+
+    const googleBtn = root.querySelector('.google-login-btn');
+    if (googleBtn) {
+        googleBtn.onclick = function() {
+            showToast('Simulating Google Sign-In...');
+            setTimeout(() => {
+                handleLogin('user@agrileaf.com', 'user123');
+            }, 800);
+        };
+    }
 }
 
 // (H) Signup View
@@ -1016,6 +1043,23 @@ function renderSignup() {
                     </div>
                     <button type="submit" class="btn btn-accent" style="width: 100%; margin-top: 8px;">Register Account</button>
                 </form>
+                
+                <div style="display: flex; align-items: center; margin: 16px 0; color: var(--gray-med); font-size: 13px;">
+                    <div style="flex: 1; height: 1px; background-color: var(--border);"></div>
+                    <span style="padding: 0 10px;">or</span>
+                    <div style="flex: 1; height: 1px; background-color: var(--border);"></div>
+                </div>
+                
+                <button type="button" class="btn google-login-btn" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background-color: var(--white); border: 1px solid #dadce0; color: #3c4043; font-weight: 500; font-size: 14px; padding: 10px 16px; border-radius: var(--radius-sm); cursor: pointer; transition: var(--transition);" onmouseenter="this.style.backgroundColor='#f8f9fa'" onmouseleave="this.style.backgroundColor='#ffffff'">
+                    <svg width="18" height="18" viewBox="0 0 18 18" style="margin-right: 4px;">
+                        <path fill="#4285F4" d="M17.64 9.2c0-.63-.06-1.25-.16-1.84H9v3.47h4.84c-.21 1.12-.84 2.07-1.79 2.7l2.76 2.13c1.62-1.49 2.55-3.69 2.55-6.3L17.64 9.2z"/>
+                        <path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.76-2.13c-.76.51-1.74.82-2.76.82-2.35 0-4.34-1.58-5.05-3.72L1.57 12.9C3.06 15.93 6.18 18 9 18z"/>
+                        <path fill="#FBBC05" d="M3.95 10.79c-.18-.54-.28-1.12-.28-1.79s.1-1.25.28-1.79L1.57 5.09C.57 7.08 0 9.48 0 12s.57 4.92 1.57 6.91l2.38-1.88z"/>
+                        <path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.44 1.35l2.58-2.58C13.46.86 11.43 0 9 0 6.18 0 3.06 2.07 1.57 5.09l2.38 1.88c.71-2.14 2.7-3.72 5.05-3.72z"/>
+                    </svg>
+                    Continue with Google
+                </button>
+
                 <div style="text-align: center; margin-top: 24px; border-top: 1px dashed var(--border); padding-top: 20px;">
                     <p style="color: var(--gray-med); font-size: 14px; margin-bottom: 12px;">Already have an account?</p>
                     <a href="#/login" class="btn btn-outline" style="width: 100%; font-size: 14px; padding: 10px 20px;">
@@ -1033,6 +1077,16 @@ function renderSignup() {
         const pass = document.getElementById('signup-password').value;
         handleSignup(name, email, pass);
     };
+
+    const googleBtn = root.querySelector('.google-login-btn');
+    if (googleBtn) {
+        googleBtn.onclick = function() {
+            showToast('Simulating Google Sign-In...');
+            setTimeout(() => {
+                handleLogin('user@agrileaf.com', 'user123');
+            }, 800);
+        };
+    }
 }
 
 // (I) Protected Owner / Admin Dashboard View
