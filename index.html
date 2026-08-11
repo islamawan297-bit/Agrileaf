@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriLeaf - Smarter Agriculture for a Greener Tomorrow</title>
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Premium Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Global Application Header -->
+    <header>
+        <div class="container navbar">
+            <!-- Logo -->
+            <a href="#/" class="logo">
+                <i class="fa-solid fa-seedling"></i>
+                <span>AgriLeaf</span>
+            </a>
+
+            <!-- Desktop Nav Menu -->
+            <ul class="nav-menu">
+                <li><a href="#/" class="nav-link active" data-route="home">Home</a></li>
+                <li><a href="#/about" class="nav-link" data-route="about">About Us</a></li>
+                <li><a href="#/products" class="nav-link" data-route="products">Products</a></li>
+                <li><a href="#/services" class="nav-link" data-route="services">Services</a></li>
+                <li><a href="#/contact" class="nav-link" data-route="contact">Contact</a></li>
+                <li><a href="#/faq" class="nav-link" data-route="faq">FAQ</a></li>
+            </ul>
+
+            <!-- Header Actions (Cart, Login/Register, Admin/User Profile) -->
+            <div class="nav-actions">
+                <!-- Cart Icon -->
+                <button id="cart-trigger-btn" class="cart-trigger" aria-label="Open Shopping Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="global-cart-count" class="cart-badge">0</span>
+                </button>
+
+                <!-- Guest Actions -->
+                <div id="guest-actions" class="nav-actions">
+                    <a href="#/login" class="btn btn-outline btn-sm">
+                        <i class="fa-regular fa-user"></i> Login
+                    </a>
+                    <a href="#/signup" class="btn btn-accent btn-sm">
+                        Sign Up <i class="fa-solid fa-arrow-right" style="margin-left: 6px;"></i>
+                    </a>
+                </div>
+
+                <!-- Logged In User Profile Actions -->
+                <div id="user-actions" class="user-dropdown-container" style="display: none;">
+                    <div id="user-badge-trigger" class="user-badge">
+                        <i class="fa-solid fa-circle-user"></i>
+                        <span id="user-name-display">Farmer</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 4px;"></i>
+                    </div>
+                    <div id="header-user-dropdown" class="user-dropdown">
+                        <a href="#/admin" id="admin-dash-link" class="dropdown-item" style="display: none;">
+                            <i class="fa-solid fa-user-shield"></i> Admin Dashboard
+                        </a>
+                        <button id="logout-btn" class="dropdown-item logout">
+                            <i class="fa-solid fa-right-from-bracket"></i> Logout
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hamburger Menu for Mobile -->
+                <button id="hamburger-btn" class="hamburger" aria-label="Toggle Navigation Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Menu Overlay -->
+    <div id="mobile-nav-overlay" class="mobile-nav-overlay">
+        <ul class="mobile-nav-list">
+            <li><a href="#/" class="mobile-nav-link" data-route="home">Home</a></li>
+            <li><a href="#/about" class="mobile-nav-link" data-route="about">About Us</a></li>
+            <li><a href="#/products" class="mobile-nav-link" data-route="products">Products</a></li>
+            <li><a href="#/services" class="mobile-nav-link" data-route="services">Services</a></li>
+            <li><a href="#/contact" class="mobile-nav-link" data-route="contact">Contact</a></li>
+            <li><a href="#/faq" class="mobile-nav-link" data-route="faq">FAQ</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Container Shell for Dynamic Rendering -->
+    <main id="app-root">
+        <!-- Rendered views will be injected here dynamically by js/app.js -->
+    </main>
+
+    <!-- Global Sliding Shopping Cart Sidebar -->
+    <div id="cart-sidebar-overlay" class="cart-overlay">
+        <div class="cart-sidebar">
+            <div class="cart-header">
+                <h2><i class="fa-solid fa-cart-shopping"></i> Shopping Cart</h2>
+                <button id="cart-close-btn" class="cart-close" aria-label="Close Cart"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <!-- Cart Items Scroll Area -->
+            <div id="cart-items-container" class="cart-items-list">
+                <!-- Cart items injected dynamically -->
+            </div>
+
+            <!-- Cart Footer Summary & Checkout -->
+            <div class="cart-footer">
+                <div class="cart-total-row">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal-val">$0.00</span>
+                </div>
+                <button id="checkout-trigger-btn" class="btn btn-accent" style="width: 100%;">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal Sheet -->
+    <div id="checkout-modal-overlay" class="checkout-modal">
+        <div class="checkout-content">
+            <button id="checkout-close-btn" class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="text-center" style="margin-bottom: 24px; color: var(--primary);">Secure Checkout</h2>
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label for="checkout-name">Full Name</label>
+                    <input type="text" id="checkout-name" class="form-control" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkout-address">Shipping Address</label>
+                    <input type="text" id="checkout-address" class="form-control" placeholder="123 Agro Lane, Green District" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkout-phone">Phone Number</label>
+                    <input type="tel" id="checkout-phone" class="form-control" placeholder="+92 300 1234567" required>
+                </div>
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <div style="display: flex; gap: 16px; margin-top: 8px;">
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; cursor: pointer;">
+                            <input type="radio" name="payment-method" value="cod" checked> Cash on Delivery (COD)
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; cursor: pointer;">
+                            <input type="radio" name="payment-method" value="card"> Card (Simulated)
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 16px;">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Detail View / Advisory Booking Modal -->
+    <div id="global-modal" class="modal-overlay">
+        <!-- Inside contents dynamically generated and injected based on context -->
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Global Premium Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <!-- Column 1: Info -->
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-seedling"></i>
+                    <span>AgriLeaf</span>
+                </div>
+                <p>Empowering growers worldwide by connecting high-accuracy IoT soil telemetry with ecological enhancers.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#/">Home</a></li>
+                    <li><a href="#/about">About Us</a></li>
+                    <li><a href="#/products">Products</a></li>
+                    <li><a href="#/services">Services</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Customer Care -->
+            <div class="footer-col">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#/contact">Contact Us</a></li>
+                    <li><a href="#/faq">FAQs</a></li>
+                    <li><a href="#/login">My Account</a></li>
+                    <li><a href="#/admin">Admin Portal</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Newsletter -->
+            <div class="footer-col">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive sustainable farming tips and smart product release announcements.</p>
+                <form id="newsletter-form" class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required aria-label="Newsletter email">
+                    <button type="submit" class="btn btn-accent" style="padding: 10px 16px;" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="container footer-bottom">
+            <p>&copy; 2026 AgriLeaf Inc. All rights reserved. Restoring soil biology globally.</p>
+            <p>Designed with <i class="fa-solid fa-heart" style="color: var(--accent);"></i> for Farmers</p>
+        </div>
+    </footer>
+
+    <!-- Database Initialization Script -->
+    <script src="js/data.js"></script>
+    <!-- Core Application Routing & Controller Script -->
+    <script src="js/app.js"></script>
+</body>
+</html>
