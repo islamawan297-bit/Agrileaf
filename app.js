@@ -973,8 +973,11 @@ function renderLogin() {
                     <div style="margin-bottom: 2px;"><strong>Admin:</strong> admin@agrileaf.com / admin123</div>
                     <div><strong>Customer:</strong> user@agrileaf.com / user123</div>
                 </div>
-                <div class="auth-footer">
-                    Don't have an account? <a href="#/signup">Sign Up Today</a>
+                <div style="text-align: center; margin-top: 24px; border-top: 1px dashed var(--border); padding-top: 20px;">
+                    <p style="color: var(--gray-med); font-size: 14px; margin-bottom: 12px;">Don't have an account?</p>
+                    <a href="#/signup" class="btn btn-outline" style="width: 100%; font-size: 14px; padding: 10px 20px;">
+                        <i class="fa-solid fa-user-plus"></i> Create New Account
+                    </a>
                 </div>
             </div>
         </section>
@@ -1013,8 +1016,11 @@ function renderSignup() {
                     </div>
                     <button type="submit" class="btn btn-accent" style="width: 100%; margin-top: 8px;">Register Account</button>
                 </form>
-                <div class="auth-footer">
-                    Already have an account? <a href="#/login">Log In Instead</a>
+                <div style="text-align: center; margin-top: 24px; border-top: 1px dashed var(--border); padding-top: 20px;">
+                    <p style="color: var(--gray-med); font-size: 14px; margin-bottom: 12px;">Already have an account?</p>
+                    <a href="#/login" class="btn btn-outline" style="width: 100%; font-size: 14px; padding: 10px 20px;">
+                        <i class="fa-solid fa-right-to-bracket"></i> Log In to Existing Account
+                    </a>
                 </div>
             </div>
         </section>
