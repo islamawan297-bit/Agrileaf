@@ -1860,8 +1860,48 @@ footer {
 }
 
 @media (max-width: 768px) {
+    /* Navbar Spacing & Compactness */
+    .navbar {
+        height: 70px;
+    }
+    
+    .logo {
+        font-size: 20px;
+    }
+    
+    .logo i {
+        font-size: 22px;
+    }
+    
+    .nav-actions {
+        gap: 8px;
+    }
+    
+    #guest-actions {
+        gap: 8px;
+    }
+    
+    .btn-sm {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .user-badge {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+    
+    main {
+        padding-top: 70px; /* Offset for sticky header */
+    }
+    
+    .mobile-nav-overlay {
+        top: 70px;
+        height: calc(100vh - 70px);
+    }
+
     .nav-menu {
-        display: none; /* Hide on mobile - will be controlled via hamburger if we toggle it, or kept simple */
+        display: none; /* Hide on mobile - controlled via hamburger */
     }
     
     .hamburger {
@@ -1892,9 +1932,74 @@ footer {
         gap: 40px;
     }
     
+    /* Center align Footer Sections on mobile/tablet */
     .footer-grid {
         grid-template-columns: 1fr 1fr;
         gap: 30px;
+    }
+    
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-logo {
+        justify-content: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .footer-links {
+        align-items: center;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        gap: 12px;
+    }
+    
+    .newsletter-form {
+        width: 100%;
+        max-width: 320px;
+    }
+    
+    /* Make Catalog Filters stack nicely */
+    .shop-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+    
+    .filter-tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .filter-tab {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+    
+    .search-box {
+        width: 100%;
+    }
+    
+    /* Make other grids responsive */
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
     }
     
     .admin-layout {
@@ -1943,6 +2048,27 @@ footer {
 }
 
 @media (max-width: 480px) {
+    .logo {
+        font-size: 18px;
+    }
+    
+    .logo i {
+        font-size: 20px;
+    }
+    
+    .btn-sm {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+    
+    #guest-actions {
+        gap: 4px;
+    }
+    
+    .nav-actions {
+        gap: 6px;
+    }
+    
     .hero-content h1 {
         font-size: 32px;
     }
